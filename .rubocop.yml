@@ -1,0 +1,14 @@
+require: rubocop-rails
+
+AllCops:
+  Exclude:
+    - db/**/*
+    - config/**/*
+    - script/**/*
+    - bin/**/*
+Metrics/LineLength:
+  Max: 100
+Metrics/MethodLength:
+  Max: 25
+Style/Documentation:
+  Enabled: false
