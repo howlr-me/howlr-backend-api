@@ -27,7 +27,7 @@ default: &default
 
 development:
   <<: *default
-  database: howlr_development
+  database: hive_development
 
 
   # The specified database role being used to connect to postgres.

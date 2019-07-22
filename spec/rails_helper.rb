@@ -1,6 +1,13 @@
 # frozen_string_literal: true
 
 require 'simplecov'
+require 'codacy-coverage'
+
+SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
+  SimpleCov::Formatter::HTMLFormatter,
+  Codacy::Formatter
+])
+
 SimpleCov.start 'rails' do
   add_group 'Policies', 'app/policies'
   add_group 'Services', 'app/services'
