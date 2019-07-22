@@ -55,8 +55,9 @@ group :development do
 end
 
 group :test do
+  gem 'codeclimate-test-reporter', require: false
   gem 'database_cleaner'
   gem 'shoulda-matchers', '~> 4.1.1'
   gem 'simplecov', require: false
-  gem 'codeclimate-test-reporter', require: false
+  gem 'rspec_junit_formatter', require: false
 end
