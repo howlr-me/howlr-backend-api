@@ -2,35 +2,42 @@
 
 module V1
   class AnnouncementsController < ApplicationController
-    before_action :find_announcement!, only: %i[show update destroy]
+    before_action :find_announcement, only: %i[show update destroy]
 
     def index
       authorize(Announcement)
-      json_response(announcements)
+      render json: announcements, status: :ok
     end
 
     def show
       authorize(@announcement)
-      json_response(@announcement)
+      render json: @announcement, status: :ok
     end
 
     def create
       authorize(Announcement)
       annc_params = announcemet_params.merge(user: current_user, client: current_user.client)
-      announcement = Announcement.create!(annc_params)
-      json_response(announcement)
+      announcement = Announcement.new(annc_params)
+      if announcement.save
+        render json: announcement, status: :ok
+      else
+        render_unprocessable_entity announcement
+      end
     end
 
     def update
       authorize(@announcement)
-      @announcement.update!(announcemet_params)
-      json_response(@announcement)
+      if @announcement.update(announcemet_params)
+        render json: @announcement, status: :ok
+      else
+        render_unprocessable_entity announcement
+      end
     end
 
     def destroy
       authorize(@announcement)
       @announcement.discard
-      json_response(nil, status: :no_content)
+      render json: nil, status: :no_content
     end
 
     private
@@ -39,8 +46,9 @@ module V1
       params.require(:announcement).permit(:title, :details)
     end
 
-    def find_announcement!
-      @announcement = announcements.find_by!(id: params[:id])
+    def find_announcement
+      @announcement = announcements.find_by(id: params[:id])
+      @announcement || render_not_found
     end
 
     def announcements

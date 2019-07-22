@@ -2,9 +2,8 @@
 
 class ApplicationController < ActionController::API
   include DeviseTokenAuth::Concerns::SetUserByToken
-  include JsonResponse
-  include ErrorResponse
   include Pundit
+  include ErrorResponse
 
   # after_action :verify_authorized
 end

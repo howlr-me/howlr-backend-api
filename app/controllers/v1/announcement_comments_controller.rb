@@ -2,24 +2,20 @@
 
 module V1
   class AnnouncementCommentsController < ApplicationController
-    before_action :find_announcement!
+    before_action :find_announcement
 
-    def index
-    end
+    def index; end
 
-    def create
-    end
+    def create; end
 
-    def update
-    end
+    def update; end
 
-    def delete
-    end
+    def delete; end
 
     private
 
-    def find_announcement!
-      @announcement = Announcemet.find_by!(id: params[:announcement_id])
+    def find_announcement
+      @announcement = policy_scope(Announcemet).find_by(id: params[:announcement_id])
     end
   end
 end

@@ -4,8 +4,6 @@
 ![Rails Version Badge](https://img.shields.io/badge/Rails-v5.2.3-blue.svg)
 [![codebeat badge](https://codebeat.co/badges/8e7b4e34-ad67-4d87-b744-9cc74b64d699)](https://codebeat.co/projects/github-com-howlr-me-howlr-backend-api-master)
 
-[![Ruby Version Badge](https://www.ruby-lang.org/en/)](https://img.shields.io/badge/Ruby-v2.6.3-blue.svg)
-
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
