@@ -48,6 +48,7 @@ end
 group :development do
   gem 'brakeman'
   gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'rubocop-rails'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
@@ -57,7 +58,5 @@ group :test do
   gem 'database_cleaner'
   gem 'shoulda-matchers', '~> 4.0.1'
   gem 'simplecov', require: false
+  gem 'codeclimate-test-reporter', require: false
 end
-
-# Ruby Linting
-gem 'rubocop-rails', require: false

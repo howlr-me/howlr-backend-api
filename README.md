@@ -2,6 +2,8 @@
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/f5bbe7fb52df413aa9f3135f861e88a7)](https://app.codacy.com/app/howlr-me/howlr-backend-api?utm_source=github.com&utm_medium=referral&utm_content=howlr-me/howlr-backend-api&utm_campaign=Badge_Grade_Settings)
 
+[![Ruby Version Badge](https://www.ruby-lang.org/en/)](https://img.shields.io/badge/Ruby-v2.6.3-blue.svg)
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
