@@ -10,7 +10,7 @@ gem 'rails', '~> 5.2.3'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
-gem 'puma', '~> 3.11'
+gem 'puma', '~> 4.0'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
@@ -24,7 +24,7 @@ gem 'omniauth'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-gem 'active_model_serializers', '~> 0.10.0'
+gem 'active_model_serializers', '~> 0.10.10'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
@@ -56,7 +56,7 @@ end
 
 group :test do
   gem 'database_cleaner'
-  gem 'shoulda-matchers', '~> 4.0.1'
+  gem 'shoulda-matchers', '~> 4.1.1'
   gem 'simplecov', require: false
   gem 'codeclimate-test-reporter', require: false
 end
