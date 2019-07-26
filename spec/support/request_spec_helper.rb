@@ -18,11 +18,12 @@ module RequestSpecHelper
     uid = response.headers['uid']
 
     auth_params = {
-      'access-token' => token,
-      'client' => client,
-      'uid' => uid,
-      'expiry' => expiry,
-      'token_type' => token_type
+      'access-token': token,
+      'client': client,
+      'uid': uid,
+      'expiry': expiry,
+      'token_type': token_type,
+      'Accept': 'application/vnd.howlr.v1+json'
     }
     auth_params
   end

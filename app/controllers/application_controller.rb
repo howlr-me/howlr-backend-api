@@ -6,4 +6,12 @@ class ApplicationController < ActionController::API
   include ErrorResponse
 
   # after_action :verify_authorized
+
+  def current_user
+    User.first
+  end
+
+  def pagination_page
+    byebug
+  end
 end

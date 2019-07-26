@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class UserSerializer < ActiveModel::Serializer
+class UserSerializer < ApplicationSerializer
   attributes :id, :name, :email
 
   belongs_to :client

@@ -4,9 +4,9 @@ class User < ApplicationRecord
   # Include default devise modules.
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable
-        #  :trackable
-        #  :validatable,
-        #  :confirmable, :omniauthable
+  #  :trackable
+  #  :validatable,
+  #  :confirmable, :omniauthable
   include DeviseTokenAuth::Concerns::User
 
   belongs_to :client, autosave: true

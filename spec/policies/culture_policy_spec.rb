@@ -4,10 +4,11 @@ require 'rails_helper'
 
 describe CulturePolicy do
   describe CulturePolicy::Scope do
-    subject { CulturePolicy::Scope.new(user, Culture) }
+    subject { described_class.new(user, Culture) }
 
     context 'for a visitor' do
       let(:user) { nil }
+
       it { expect { subject }.to raise_error(Pundit::NotAuthorizedError) }
     end
 

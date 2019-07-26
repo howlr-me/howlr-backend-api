@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class AnnouncementSerializer < ActiveModel::Serializer
+class AnnouncementSerializer < ApplicationSerializer
   attributes :id, :title, :details
 
   belongs_to :user

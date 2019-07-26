@@ -3,11 +3,47 @@
 # Check https://circleci.com/docs/2.0/language-ruby/ for more details
 #
 version: 2
+
+workflows:
+  version: 2
+  build-workflow:
+    jobs:
+      - install:
+          filters:
+            tags:
+              only: /.*/
+
+      - build:
+          filters:
+            tags:
+              only: /.*/
+
+      - lint_rubocop:
+          filters:
+            tags:
+              only: /.*/
 jobs:
   build:
-    context: codacy
     docker:
       # specify the version you desire here
+      - image: circleci/ruby:2.6.2-stretch
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+
+      - run:
+          name: install dependencies
+          command: |
+            bundle install --jobs=4 --retry=3 --path vendor/bundle --with test
+
+      - save_cache:
+          paths:
+            - ./vendor/bundle
+          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+  test:
+    context: codacy
+    docker:
       - image: circleci/ruby:2.6.2-stretch
 
       # Specify service dependencies here if necessary
@@ -19,7 +55,6 @@ jobs:
           POSTGRES_DB: howlr_test
 
     working_directory: ~/repo
-
     steps:
       - checkout
 
@@ -30,15 +65,6 @@ jobs:
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
 
-      - run:
-          name: install dependencies
-          command: |
-            bundle install --jobs=4 --retry=3 --path vendor/bundle --with test
-
-      - save_cache:
-          paths:
-            - ./vendor/bundle
-          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
 
       # Database setup
       - run: bundle exec rake db:create
@@ -65,3 +91,17 @@ jobs:
       - store_artifacts:
           path: /tmp/test-results
           destination: test-results
+  lint_rubocop:
+    docker:
+      # specify the version you desire here
+      - image: circleci/ruby:2.6.2-stretch
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "Gemfile.lock" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
+      - run: bundle exec rubocop

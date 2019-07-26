@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 describe ApplicationPolicy do
-  subject { ApplicationPolicy.new(user, Role) }
+  subject { described_class.new(user, Role) }
 
   context 'for a visitor' do
     let(:user) { nil }
@@ -22,7 +22,7 @@ describe ApplicationPolicy do
   end
 
   describe ApplicationPolicy::Scope do
-    subject { ApplicationPolicy::Scope.new(user, Role) }
+    subject { described_class.new(user, Role) }
 
     context 'for a visitor' do
       let(:user) { nil }

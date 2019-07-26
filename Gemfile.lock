@@ -47,6 +47,7 @@ GEM
       i18n (>= 0.7, < 2)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
+    api-pagination (4.8.2)
     arel (9.0.0)
     ast (2.4.0)
     bcrypt (3.1.13)
@@ -89,6 +90,7 @@ GEM
     ffi (1.11.1)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    hashids (1.0.5)
     hashie (3.6.0)
     i18n (1.6.0)
       concurrent-ruby (~> 1.0)
@@ -192,6 +194,8 @@ GEM
     rubocop-rails (2.2.1)
       rack (>= 1.1)
       rubocop (>= 0.72.0)
+    rubocop-rspec (1.34.0)
+      rubocop (>= 0.60.0)
     ruby-progressbar (1.10.1)
     ruby_dep (1.5.0)
     shoulda-matchers (4.1.1)
@@ -223,12 +227,14 @@ GEM
     websocket-driver (0.7.1)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.4)
+    will_paginate (3.1.7)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   active_model_serializers (~> 0.10.10)
+  api-pagination
   bootsnap (>= 1.1.0)
   brakeman
   bullet
@@ -239,6 +245,7 @@ DEPENDENCIES
   discard (~> 1.0)
   factory_bot_rails
   faker
+  hashids
   listen (>= 3.0.5, < 3.2)
   omniauth
   pg (>= 0.18, < 2.0)
@@ -249,10 +256,12 @@ DEPENDENCIES
   rspec-rails (~> 3.8)
   rspec_junit_formatter
   rubocop-rails
+  rubocop-rspec
   shoulda-matchers (~> 4.1.1)
   simplecov
   spring
   spring-watcher-listen (~> 2.0.0)
+  will_paginate
 
 RUBY VERSION
    ruby 2.6.2p47

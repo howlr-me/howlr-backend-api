@@ -1,4 +1,6 @@
-require: rubocop-rails
+require:
+  - rubocop-rails
+  - rubocop-rspec
 
 AllCops:
   Exclude:
@@ -6,10 +8,24 @@ AllCops:
     - config/**/*
     - script/**/*
     - bin/**/*
-    - spec/**/*
+
+Security:
+  Enabled: true
+
+Lint/Debugger:
+  Enabled: true
+
+Lint/Syntax:
+  Enabled: true
+
+RSpec/Focus:
+  Enabled: true
+
 Metrics/LineLength:
   Max: 100
+
 Metrics/MethodLength:
   Max: 25
+
 Style/Documentation:
   Enabled: false

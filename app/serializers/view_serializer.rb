@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
-class ViewSerializer < ActiveModel::Serializer
-  attributes :id, :viewable_id, :viewable_type
+class ViewSerializer < ApplicationSerializer
+  attributes :id
+
   belongs_to :user
 end

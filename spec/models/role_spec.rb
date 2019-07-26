@@ -13,7 +13,7 @@ RSpec.describe Role, type: :model do
 
   context 'validations' do
     it {
-      is_expected.to validate_inclusion_of(:name)
+      expect(subject).to validate_inclusion_of(:name)
         .in_array(%w[super_admin admin])
     }
   end

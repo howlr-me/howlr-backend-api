@@ -4,7 +4,9 @@ module V1
   class AnnouncementViewsController < ApplicationController
     before_action :find_announcement
 
-    def index; end
+    def index
+      paginate json: @annc.views
+    end
 
     def create
       annc_view = @annc.views.find_or_create_by(user: current_user, client: current_user.client)
@@ -18,8 +20,7 @@ module V1
     private
 
     def find_announcement
-      @annc = policy_scope(Announcement)
-              .find_by(id: params[:announcement_id])
+      @annc = policy_scope(Announcement).by_hashid(params[:announcement_id])
     end
   end
 end

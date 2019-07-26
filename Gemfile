@@ -31,10 +31,17 @@ gem 'bootsnap', '>= 1.1.0', require: false
 # Soft deletes for ActiveRecord done right.
 gem 'discard', '~> 1.0'
 
+# Use hashids when you do not want to expose your database ids to the user
+gem 'hashids'
+
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
 gem 'pundit'
 gem 'rolify'
+
+# Pagination
+gem 'api-pagination'
+gem 'will_paginate'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -49,6 +56,7 @@ group :development do
   gem 'brakeman'
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'rubocop-rails'
+  gem 'rubocop-rspec'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
