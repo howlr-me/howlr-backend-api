@@ -76,7 +76,7 @@ jobs:
       - checkout
 
       # Download and cache dependencies
-      - run: bundle install -jobs=4 --retry=3 --path vendor/bundle
+      - run: bundle install --jobs=4 --retry=3 --path vendor/bundle
       # Database setup
       - run: bundle exec rake db:create
       - run: bundle exec rake db:schema:load
@@ -110,5 +110,5 @@ jobs:
 
     steps:
       - checkout
-      - run: bundle install -jobs=4 --retry=3 --path vendor/bundle
+      - run: bundle install --jobs=4 --retry=3 --path vendor/bundle
       - run: bundle exec rubocop
