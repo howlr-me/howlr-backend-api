@@ -8,7 +8,7 @@ AllCops:
     - config/**/*
     - script/**/*
     - bin/**/*
-
+    - vendor/bundle/**/*
 Security:
   Enabled: true
 
