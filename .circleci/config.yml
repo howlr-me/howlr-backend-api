@@ -38,6 +38,12 @@ jobs:
     steps:
       - checkout
 
+      - restore_cache:
+          keys:
+            - bundler-{{ checksum "Gemfile.lock" }}
+            # fallback to using the latest cache if no exact match is found
+            - bundler-
+
       - run:
           name: install dependencies
           command: |
@@ -70,13 +76,7 @@ jobs:
       - checkout
 
       # Download and cache dependencies
-      - restore_cache:
-          keys:
-            - bundler-{{ checksum "Gemfile.lock" }}
-            # fallback to using the latest cache if no exact match is found
-            - bundler-
-
-
+      - run: bundle install -jobs=4 --retry=3 --path vendor/bundle
       # Database setup
       - run: bundle exec rake db:create
       - run: bundle exec rake db:schema:load
@@ -110,9 +110,5 @@ jobs:
 
     steps:
       - checkout
-      - restore_cache:
-          keys:
-            - bundler-{{ checksum "Gemfile.lock" }}
-            # fallback to using the latest cache if no exact match is found
-            - bundler-
+      - run: bundle install -jobs=4 --retry=3 --path vendor/bundle
       - run: bundle exec rubocop
